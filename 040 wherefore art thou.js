@@ -15,17 +15,25 @@ function whatIsInAName(collection, source) {
 	var arr = [];
 	// Only change code below this line
 
-	var propName = Object.keys(source)[0];
-	var propValue = source[propName];
+	var sourcePropNames = Object.keys(source);
+	var colPropNames;
 
-	for (var i = 0; i < collection.length; i++) {
-		if (collection[i][propName] == propValue) {
-			arr.push(collection[i]);
+	for (var i == 0; i <= collection.length; i++) {
+
+		for (var j = 0; j < collection[i].length; j++) {
+
+			
+
 		}
-	}
+
+	})
+
+
+
 
 	// Only change code above this line
 	return arr;
 }
 
 console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 }));
