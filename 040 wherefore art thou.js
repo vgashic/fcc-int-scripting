@@ -16,19 +16,22 @@ function whatIsInAName(collection, source) {
 	// Only change code below this line
 
 	var sourcePropNames = Object.keys(source);
+	var n = sourcePropNames.length;
 	var colPropNames;
 
-	for (var i == 0; i <= collection.length; i++) {
+	for (var i = 0; i <= collection.length; i++) {
+		console.log(collection[i]);
 
-		for (var j = 0; j < collection[i].length; j++) {
-
-			
-
+		for (var j = 0; j < n; j++) {
+			if (!collection[i].hasOwnProperty(sourcePropNames[j])) {
+				collection.splice(i, 1);
+				continue;
+			}
 		}
 
-	})
+	}
 
-
+	console.log(collection);
 
 
 	// Only change code above this line
