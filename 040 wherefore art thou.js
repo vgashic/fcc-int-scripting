@@ -11,32 +11,43 @@ then you must return the third object from the array (the first argument), becau
 
 
 function whatIsInAName(collection, source) {
-	// What's in a name?
-	var arr = [];
-	// Only change code below this line
+    // What's in a name?
+    var arr = [];
+    // Only change code below this line
 
-	var sourcePropNames = Object.keys(source);
-	var n = sourcePropNames.length;
-	var colPropNames;
+    //console.log(collection[0]);
 
-	for (var i = 0; i <= collection.length; i++) {
-		console.log(collection[i]);
+    var sourcePropNames = Object.keys(source);
+    var n = sourcePropNames.length;
+    var colPropNames;
 
-		for (var j = 0; j < n; j++) {
-			if (!collection[i].hasOwnProperty(sourcePropNames[j])) {
-				collection.splice(i, 1);
-				continue;
-			}
-		}
+    for (var i = 0; i < collection.length; i++) {
+        //console.log(collection[i]);
 
-	}
-
-	console.log(collection);
+        for (var j = 0; j < n; j++) {
+            if (!collection[i].hasOwnProperty(sourcePropNames[j])) {
+                collection.splice(i, 1);
+            } else {
+                console.log(collection[i]);
+                console.log(sourcePropNames[j] + ": " + source[sourcePropNames[j]]);
 
 
-	// Only change code above this line
-	return arr;
+                if (collection[i][sourcePropNames[j]] !== source[sourcePropNames[j]]) {
+                    collection.splice(i, 1);
+                    console.log("deleted");
+                }
+                console.log("#######################");
+            }
+        }
+
+    }
+
+
+
+
+    // Only change code above this line
+    return collection;
 }
 
 console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
-console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 }));
+//console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 }));
