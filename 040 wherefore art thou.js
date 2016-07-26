@@ -15,39 +15,64 @@ function whatIsInAName(collection, source) {
     var arr = [];
     // Only change code below this line
 
-    //console.log(collection[0]);
-
     var sourcePropNames = Object.keys(source);
     var n = sourcePropNames.length;
-    var colPropNames;
+    var toDelete = [];
 
     for (var i = 0; i < collection.length; i++) {
-        //console.log(collection[i]);
 
         for (var j = 0; j < n; j++) {
             if (!collection[i].hasOwnProperty(sourcePropNames[j])) {
-                collection.splice(i, 1);
+                toDelete.push(i);
             } else {
-                console.log(collection[i]);
-                console.log(sourcePropNames[j] + ": " + source[sourcePropNames[j]]);
-
-
                 if (collection[i][sourcePropNames[j]] !== source[sourcePropNames[j]]) {
-                    collection.splice(i, 1);
-                    console.log("deleted");
+                    toDelete.push(i);
                 }
-                console.log("#######################");
             }
         }
 
     }
 
-
+    for (var k = 0; k < collection.length; k++) {
+        if (toDelete.indexOf(k) == -1) {
+            arr.push(collection[k]);
+        }
+    }
 
 
     // Only change code above this line
-    return collection;
+    return arr;
 }
 
-console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
-//console.log(whatIsInAName([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 }));
+
+
+
+// Tests
+
+console.log(whatIsInAName([{
+    first: "Romeo",
+    last: "Montague"
+}, {
+    first: "Mercutio",
+    last: null
+}, {
+    first: "Tybalt",
+    last: "Capulet"
+}], {
+    last: "Capulet"
+}));
+
+
+console.log(whatIsInAName([{
+    "a": 1,
+    "b": 2
+}, {
+    "a": 1
+}, {
+    "a": 1,
+    "b": 2,
+    "c": 2
+}], {
+    "a": 1,
+    "b": 2
+}));
