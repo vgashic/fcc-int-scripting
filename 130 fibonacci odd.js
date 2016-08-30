@@ -11,7 +11,7 @@ function fibonacci(n) {
 
   var res = [1, 1];
 
-  for (var i = 2; i <= n; i++) {
+  for (var i = 2; i < n; i++) {
     res.push(res[i - 2] + res[i - 1]);
   }
 
@@ -19,8 +19,20 @@ function fibonacci(n) {
 }
 
 function sumFibs(num) {
-  return num;
+  "use strict";
+
+  var fib = fibonacci(num);
+  var res = 0;
+
+  console.log(fib);
+
+  for (var i = 0; fib[i] <= num; i++) {
+    res += fib[i] % 2 === 1 ? fib[i] : 0;
+  }
+
+  return res;
+
 }
 
-console.log(fibonacci(2));
+console.log(sumFibs(10));
 //sumFibs(4);
