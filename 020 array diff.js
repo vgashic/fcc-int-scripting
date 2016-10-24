@@ -2,26 +2,20 @@
 Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
 */
 
-function countVal(arr, val) {
+function arrDiff(a1, a2) {
+	"use strict";
 
-	return arr.filter(function(a) {
-		return a == val;
-	}).length;
-
+	return a1.filter(function (x) {
+		return a2.indexOf(x) == -1;
+	});
 }
+
 
 
 function diffArray(arr1, arr2) {
 	"use strict";
 
-	var concArr = arr1.concat(arr2);
-
-	var diffArr = concArr.filter(function(a) {
-		return countVal(concArr, a) == 1;
-	})
-
-
-	return diffArr;
+	return arrDiff(arr1, arr2).concat(arrDiff(arr2, arr1));
 }
 
-console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
+console.log(diffArray([1, 2, 3, 5, 6], [1, 2, 3, 4, 4, 5]));
