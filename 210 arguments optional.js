@@ -37,18 +37,19 @@ function addTogether() {
 		}
 	} else {
 		var ar1 = arguments[0];
-		console.log(checkIfNum(ar1));
-		return function (arg2) {
 
-			if (!checkIfNum(ar1) || !checkIfNum(arg2)) {
-				return undefined;
-			} else {
-				return ar1 + arg2;
-			}
-		};
+		if (checkIfNum(ar1)) {
+			return function (arg2) {
 
+				if (!checkIfNum(ar1) || !checkIfNum(arg2)) {
+					return undefined;
+				} else {
+					return ar1 + arg2;
+				}
+			};
+		}
 
 	}
 }
 
-console.log(addTogether("2) (3"));
+console.log(addTogether("qwer"));
